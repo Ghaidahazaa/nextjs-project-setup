@@ -12,7 +12,7 @@ interface SideEffectModalProps {
   onSuccess: () => void;
 }
 
-const schema = yup.object().shape({
+const schema = yup.object({
   symptom: yup.string().required("Symptom is required"),
   severity: yup
     .number()
