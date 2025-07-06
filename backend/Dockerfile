@@ -1,0 +1,16 @@
+# This file is renamed to Dockerfile.backend as per user request
+
+FROM python:3.10
+
+# Set workdir
+WORKDIR /app
+
+# Install deps
+COPY backend/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy project files
+COPY backend /app
+
+# Run entrypoint
+CMD ["gunicorn", "backend.wsgi:application", "--bind", "0.0.0.0:8000"]
